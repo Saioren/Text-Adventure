@@ -3,6 +3,47 @@
     padding: 0;
     box-sizing: border-box;
   }
+  @media screen and (max-width: 550px) {
+    .game-content  {
+      width: 400px;
+    }
+  }
+  @media screen and (max-width: 550px) {
+    .game-screen-container  {
+      width: 420px;
+    }
+  }
+  @media screen and (max-width: 400px) {
+    .game-content  {
+      width: 300px;
+    }
+  }
+  @media screen and (max-width: 400px) {
+    .game-screen-container  {
+      width: 320px;
+    }
+  }
+  @media screen and (min-width: 550px) {
+    .game-content   {
+      width: 500px;
+    }
+  }
+  @media screen and (min-width: 550px) {
+    .game-screen-container   {
+      width: 520px;
+    }
+  }
+  
+.text span {
+  opacity: 0;
+}
+.text span.relealed {
+  opacity: 1;
+}
+.text span.green {
+  color: green;
+}
+
   body {
     background-color: #333;
     background-image: url('./images/Anime-Forest-Backgrounds-Desktop.jpg');
@@ -12,16 +53,63 @@
     background-position: center;
     display: flex;
     justify-content: center;
-    align-items: center;
+    margin-top: 20px;
   }
+  .btn-grid {
+    display: grid;
+    grid-template-columns: repeat(1, auto);
+    padding: 5px;
+    gap: 5px;
+  }
+  .btn-1 {
+
+  }
+  
 .container {
-    background-color: #333;
+    
 }
 *{
 box-sizing: border-box;
 margin: 0;
 padding: 0;
 }
+
+.game-content{
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 400px;
+  
+  background-image: url('../images/Digital-Art-High-Definition-4K-Wallpaper-41716.jpg');
+}
+.game-screen {
+  position: relative;
+}
+.game-screen-container {
+  background-color: black;
+  
+  z-index: 20;
+  height: 420px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+.game-text-container {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: auto;
+  word-wrap: wrap;
+  word-break: wrap;
+  color: white;
+  padding: 10px;
+}
+button:hover {
+  cursor: pointer;
+}
+
 .dialogue-screen-container {
 border: 5px solid black;
 height: auto;
@@ -44,7 +132,7 @@ width: 100%;
 display: block;
 
 }
-#option button {
+#option-buttons button {
 background-color: transparent;
 border: none;
 padding: 10px;

@@ -19,29 +19,51 @@ function showTextNode(textNodeIndex) {
     if (showOption(option)) {
       const button = document.createElement('button')
       button.innerText = option.text
-      button.classList.add(`btn${textNode.options.optionNumber}`)
+      button.classList.add(`btn`)
       button.addEventListener('click', () => selectOption(option))
       optionButtonsElement.appendChild(button)
     }
-  })
+  });
+  while (optionButtonsElement.firstChild) {
+    optionButtonsElement.removeChild(optionButtonsElement.firstChild)
+  }
+
+  textNode.options.forEach(option => {
+    const button = document.createElement('button')
+    button.innerText = option.text
+    button.classList.add(`btn-${option.optionNumber}`)
+    button.addEventListener('click', () => selectOption(option))
+    optionButtonsElement.appendChild(button)
+  });
+  
 }
 
+function changeImage(image) {
+  document.querySelector('.game-content').style.backgroundImage = image;
+}
 function showOption(option) {
   return option.requiredState == null || option.requiredState(state)
 }
 
 function selectOption(option) {
-  const nextTextNodeId = option.nextText
+  const nextTextNodeId = option.nextText;
   if (nextTextNodeId <= 0) {
-    return startGame()
+    return startGame();
   }
-  state = Object.assign(state, option.setState)
-  showTextNode(nextTextNodeId)
+  state = Object.assign(state, option.setState);
+  showTextNode(nextTextNodeId);
+
+  if (textNodes.imageURL) {
+    changeImage(textNodes.imageURL);
+  }
 }
+
+
 
 const textNodes = [
   {
     id: 1,
+    imageURL: 'url(../images/Digital-Art-High-Definition-4K-Wallpaper-41716.jpg)',
     text: 'You wake up in a strange place and you see a jar of blue goo near you.',
     options: [
       {
@@ -59,6 +81,7 @@ const textNodes = [
   },
   {
     id: 2,
+    imageURL: 'url(../images/Anime-Forest-Backgrounds-Desktop.jpg)',
     text: 'You venture forth in search of answers to where you are when you come across a merchant.',
     options: [
       {
@@ -202,3 +225,4 @@ const textNodes = [
 ]
 
 startGame()
+changeImage();
